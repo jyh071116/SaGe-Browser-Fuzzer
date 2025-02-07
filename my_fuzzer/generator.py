@@ -433,10 +433,7 @@ class Generator:
         if os.getenv("COLLECT_TREE_INFO") is not None:
             print("collect tree info")
             self.collect_tree_info = True
-        self.use_invalid_tree = False
-        if os.getenv("USE_INVALID_TREE") is not None:
-            print("use invalid tree")
-            self.use_invalid_tree = True
+        self.use_invalid_tree = True
 
         self.jsgrammar = Grammar(selector=selector, global_info=global_info, grammar_type="js",
                                  should_remove_redundant=True,
@@ -483,10 +480,8 @@ class Generator:
         if self.dump_tree_dir is None:
             print("dump_tree_dir is None")
             return
-        if not self.use_invalid_tree:
-            # when we use invalid tree, we don't need to dump derivation tree
-            with open(f"{self.dump_tree_dir}/{random.getrandbits(128)}.pickle", "wb") as f:
-                pickle.dump((self.derivation_tree_list, self.statement_to_tree, feedback), f)
+        with open(f"{self.dump_tree_dir}/{random.getrandbits(128)}.pickle", "wb") as f:
+            pickle.dump((self.derivation_tree_list, self.statement_to_tree, feedback), f)
         self.derivation_tree_list.clear()
         self.statement_to_tree.clear()
 

@@ -144,6 +144,8 @@ class InvalidTreesAndInfo:
         # list of rule name
         self.global_list: List[str] = []
         self.max_parent_num = 2
+        self.update_interval = int(os.getenv("UPDATE_INTERVAL", 500))
+        self.update_count = 0
 
         if "INVALID_TREE_PATH" not in os.environ or "RULE_INFO_PATH" not in os.environ:
             print("not set INVALID_TREE_PATH or RULE_INFO_PATH. Invalid tree cannot work!")
@@ -182,11 +184,36 @@ class InvalidTreesAndInfo:
                 p = p.children[parent_index]
             else:
                 return True
-
+        
         if len(p.children) == 0:
             return False
         else:
             return True
+        
+    def update_invalid_tree(self, feedback: List[tuple]):        
+        for statement, is_invalid in feedback:
+            if statement not in self.global_map:
+                new_index = len(self.global_list)
+                self.global_map[statement] = new_index
+                self.global_list.append(statement)
+
+            rule_index = self.global_map[statement]
+
+            if rule_index not in self.invalid_node_dic:
+                self.invalid_node_dic[rule_index] = InvalidNode(rule_index)
+
+            if is_invalid:
+                self.invalid_node_dic[rule_index].invalid_count += 1
+                if self.invalid_node_dic[rule_index].invalid_count > 5:
+                    self.invalid_node_dic[rule_index].is_invalid = True
+
+        self.update_count += 1
+        if self.update_count >= self.update_interval:
+            with open(os.getenv("INVALID_TREE_PATH"), "wb") as f:
+                pickle.dump(self.invalid_node_dic, f)
+            with open(os.getenv("RULE_INFO_PATH"), "wb") as f:
+                pickle.dump((self.global_map, self.global_list), f)
+            self.update_count = 0
 
 
 class GlobalInfo:
@@ -306,119 +333,6 @@ class StatisticsList:
         self.parent: str = parent_rule
         self.child_stat_index_map = {}
         self.children_stats: List[Statistics] = []
-
-
-class OneGramSelector:
-    def __init__(self):
-        # grammar_type -> {rule1 -> [[stat1, stat2, ...], ..]}
-        # example:
-        # "js" -> {"<X> = <a>.append(<b>)" -> [stats of <a>, stats of <b>]}
-        self.production_rules: Dict[str, Dict[str, List[StatisticsList]]] = {"js": {}, "html": {}, "css": {}}
-
-    def get_stat_list(self, parent_rule: str, symbol_order: int, grammar_type: str) -> StatisticsList:
-        return self.production_rules[grammar_type][parent_rule][symbol_order]
-
-    def get_weights(self, parent_rule: str, symbol_order: int, grammar_type: str) -> List[float]:
-        all_stats = self.production_rules[grammar_type][parent_rule]
-        assert symbol_order < len(all_stats), f"{parent_rule}, {symbol_order}"
-        stats = all_stats[symbol_order].children_stats
-        res = []
-        for child_stat in stats:
-            res.append(child_stat.selection_weight)
-        return res
-
-    def get_weight(self, parent_rule: str, symbol_order: int, child_no: int, grammar_type: str) -> float:
-        return self.production_rules[grammar_type][parent_rule][symbol_order].children_stats[child_no].selection_weight
-
-    def check_and_add_rule(self, rule, global_info: GlobalInfo, grammar_type: str):
-        children_tag_names = non_terminators_in_rule(rule)
-        rule_original_line = rule["original_line"]
-        if rule_original_line not in self.production_rules[grammar_type]:
-            tmp = []
-            for symbol_order, symbol_for_expand in enumerate(children_tag_names):
-                stat_list = StatisticsList(symbol_for_expand,
-                                           symbol_order, rule_original_line)
-                for child_index, creator_rule in enumerate(global_info.creators[grammar_type][symbol_for_expand]):
-                    child_original_line = creator_rule["original_line"]
-                    stat = Statistics(child_index, child_original_line)
-
-                    # update child_stat_index_map and children_stats
-                    child_stat_index = len(stat_list.children_stats)
-                    stat_list.child_stat_index_map[child_original_line] = child_stat_index
-                    stat_list.children_stats.append(stat)
-
-                tmp.append(stat_list)
-            self.production_rules[grammar_type][rule_original_line] = tmp
-
-        else:
-            self_children_symbols = []
-            for stat_list in self.production_rules[grammar_type][rule_original_line]:
-                self_children_symbols.append(stat_list.child_symbol)
-            assert self_children_symbols == children_tag_names
-
-    def check_and_add_symbol_and_rules(self, grammar_type: str, symbol: str, father_rule: str, rules: List[List[str]]):
-        if father_rule not in self.production_rules[grammar_type]:
-            self.production_rules[grammar_type][father_rule] = []
-            for child_index, child_rules in enumerate(rules):
-                keys = sorted(child_rules)
-                stats = StatisticsList(symbol, child_index, father_rule)
-                for i, key in enumerate(keys):
-                    stat = Statistics(i, key)
-
-                    # update child_stat_index_map and children_stats
-                    child_stat_index = len(stats.children_stats)
-                    stats.child_stat_index_map[key] = child_stat_index
-                    stats.children_stats.append(stat)
-
-                self.production_rules[grammar_type][father_rule].append(stats)
-
-        else:
-            for i in range(len(self.production_rules[grammar_type][father_rule])):
-                for j in range(len(self.production_rules[grammar_type][father_rule][i].children_stats)):
-                    assert self.production_rules[grammar_type][
-                               father_rule][i].children_stats[j].child_statement == rules[i][j]
-
-    def _update_edge(self, grammar_type: str, parent_name: str,
-                     child_symbol_order: int, child_name: str, is_semantic_error: bool):
-        stat_list = self.production_rules[grammar_type][parent_name][child_symbol_order]
-        creator_index = stat_list.child_stat_index_map[child_name]
-        stat_list.children_stats[creator_index].total += 1
-        stat_list.children_stats[creator_index].success += 0 if is_semantic_error else 1
-
-    def update_stats(self, grammar_type: str, root: DerivationTreeNode, is_semantic_error: bool):
-        q = deque()
-        q.append((root.parent.rule, root.parent_index, root))
-        while len(q) != 0:
-            tmp = q.pop()
-
-            # for example:
-            # parent_name: <X> = <A>.xxxx(<B>)
-            # current_node: <A> = aaa
-            # symbol_order: 0 (because current node is the expansion of the **first** non-terminal in the parent)
-            parent_name: Optional[str] = tmp[0]
-            symbol_order: int = tmp[1]
-            current_node: DerivationTreeNode = tmp[2]
-            current_name = current_node.rule
-            if current_node.is_phantom:
-                continue
-            if parent_name is not None:
-                self._update_edge(grammar_type, parent_name, symbol_order, current_name, is_semantic_error)
-
-            for order, child in enumerate(current_node.get_children()):  # reversing or not reversing would be ok
-                if child is not None:
-                    q.append((current_name, order, child))
-
-    def update_probs(self):
-        for grammar_type in ["html", "js"]:
-            for _parent_name, non_terminators in self.production_rules[grammar_type].items():
-                for stat_list in non_terminators:
-                    for stats in stat_list.children_stats:
-                        if stats.total != 0 and stats.success == 0:
-                            stats.selection_weight /= 10
-                        elif stats.success > 0:
-                            stats.selection_weight = 1
-                        stats.success = 0
-                        stats.total = 0
 
 class Grammar(object):
     """Parses grammar and generates corresponding languages.
@@ -1726,3 +1640,7 @@ class Grammar(object):
         self._all_rules = modified_rule
         self._creators = modified_creators
         self.remove_redundant_from_grammar()
+    
+    def handle_feedback(self, feedback: List[Tuple[str, bool]]):
+        if self.use_invalid_tree and self.invalid_tree:
+            self.invalid_tree.update_invalid_tree(feedback)

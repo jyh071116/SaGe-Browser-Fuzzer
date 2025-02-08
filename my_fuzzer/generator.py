@@ -433,12 +433,11 @@ class Generator:
         if os.getenv("COLLECT_TREE_INFO") is not None:
             print("collect tree info")
             self.collect_tree_info = True
-        self.use_invalid_tree = True
 
         self.jsgrammar = Grammar(selector=selector, global_info=global_info, grammar_type="js",
                                  should_remove_redundant=True,
                                  collect_tree_info=self.collect_tree_info,
-                                 use_invalid_tree=self.use_invalid_tree)
+                                 use_invalid_tree=True)
         browser_grammar = os.getenv("BROWSER_GRAMMAR")
         if browser_grammar is None:
             print("not set BROWSER_GRAMMAR, default webref_js")
@@ -468,20 +467,7 @@ class Generator:
         self.jsgrammar.add_import('cssgrammar', self.cssgrammar)
 
     def handle_feedback(self, feedback: List[Tuple[str, bool]]):
-        # for line in feedback:
-        #     statement = line[0]
-        #     is_semantic_error = line[1]
-        #     try:
-        #         tree = self.statement_to_tree[statement]
-        #         # self.selector.update_stats("js", tree, is_semantic_error)
-        #     except KeyError as e:
-        #         print(e)
-        #         print(f"statement: {statement}")
-        if self.dump_tree_dir is None:
-            print("dump_tree_dir is None")
-            return
-        with open(f"{self.dump_tree_dir}/{random.getrandbits(128)}.pickle", "wb") as f:
-            pickle.dump((self.derivation_tree_list, self.statement_to_tree, feedback), f)
+        self.jsgrammar.handle_feedback(feedback)
         self.derivation_tree_list.clear()
         self.statement_to_tree.clear()
 

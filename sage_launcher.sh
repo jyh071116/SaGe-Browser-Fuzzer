@@ -50,7 +50,7 @@ GDM3_CUSTOM_CONF="/etc/gdm3/custom.conf"
 WAYLAND_ENABLED=false
 WATCHDOG_PID=0
 
-export USE_INVALID_TREE=true
+export UPDATE_INTERVAL=500
 export PRINT_TIME=true
 export INVALID_TREE_PATH="$SAGE_PATH/invalid_tree/invalid_tree.pickle"
 export RULE_INFO_PATH="$SAGE_PATH/invalid_tree/global_info.pickle"

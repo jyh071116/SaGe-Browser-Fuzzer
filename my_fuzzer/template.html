@@ -11,6 +11,46 @@
 var myFeedback = [];
 function UpdateFeedback(line, res) { myFeedback.push([line, res]) }
 
+const elementProxyHandler = {
+  get(target, prop) {
+      if (!(prop in target)) {
+          throw new TypeError();
+      }
+      const value = target[prop];
+
+      return typeof value === "function" ? value.bind(target) : value;
+  },
+  set(target, prop, value) {
+      throw new TypeError();
+  }
+};
+
+const documentProxyHandler = {
+  get(target, prop) {
+      if (!(prop in target)) {
+          throw new TypeError();
+      }
+
+      const value = target[prop];
+
+      if (typeof value === "function") {
+          return function(...args) {
+              const result = value.apply(target, args);
+
+              if (result instanceof HTMLElement || result instanceof Node) {
+                  return new Proxy(result, elementProxyHandler);
+              }
+
+              return result;
+          };
+      }
+
+      return value;
+  }
+};
+
+const strictDocument = new Proxy(document, documentProxyHandler);
+
 function freememory() {
   try { CollectGarbage(); } catch(err) { }
   try { FuzzingFunctions.garbageCollect(); } catch(err) { }

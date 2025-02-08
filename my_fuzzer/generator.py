@@ -268,7 +268,7 @@ def generate_html_elements(ctx, n):
         varname = 'htmlvar%05d' % ctx['htmlvarctr']
         ctx['htmlvars'].append({'name': varname, 'type': tagtype})
         ctx[
-            'htmlvargen'] += '/* newvar{' + varname + ':' + tagtype + '} */ var ' + varname + ' = document.createElement(\"' + tag + '\"); //' + tagtype + '\n'
+            'htmlvargen'] += '/* newvar{' + varname + ':' + tagtype + '} */ var ' + varname + ' = strictDocument.createElement(\"' + tag + '\"); //' + tagtype + '\n'
 
 
 def add_html_ids(matchobj, ctx, original_line=None):
@@ -279,8 +279,8 @@ def add_html_ids(matchobj, ctx, original_line=None):
         varname = 'htmlvar%05d' % ctx['htmlvarctr']
         ctx['htmlvars'].append({'name': varname, 'type': _HTML_TYPES[tagname]})
         ctx['htmlvargen'] += f"/* newvar{{ {varname}: {_HTML_TYPES[tagname]} }} */ " \
-                             f"var {varname} = document.getElementById(\"{varname}\"); " \
-                             f"if({varname} == null) {{ {varname} = document.createElement(\"{tagname}\");}}" \
+                             f"var {varname} = strictDocument.getElementById(\"{varname}\"); " \
+                             f"if({varname} == null) {{ {varname} = strictDocument.createElement(\"{tagname}\");}}" \
                              f"\n"
         return matchobj.group(0) + 'id=\"' + varname + '\" '
     elif tagname in _SVG_TYPES:
@@ -288,9 +288,9 @@ def add_html_ids(matchobj, ctx, original_line=None):
         varname = 'svgvar%05d' % ctx['svgvarctr']
         ctx['htmlvars'].append({'name': varname, 'type': _SVG_TYPES[tagname]})
         ctx['htmlvargen'] += f"/* newvar{{ {varname}: {_SVG_TYPES[tagname]} }} */ " \
-                             f"var {varname} = document.getElementById(\"{varname}\"); " \
+                             f"var {varname} = strictDocument.getElementById(\"{varname}\"); " \
                              f"if({varname} == null) {{ {varname} = " \
-                             f"document.createElementNS(\"http://www.w3.org/2000/svg\",\"{tagname}\");}}" \
+                             f"strictDocument.createElementNS(\"http://www.w3.org/2000/svg\",\"{tagname}\");}}" \
                              f"\n"
         return matchobj.group(0) + 'id=\"' + varname + '\" '
     else:
@@ -302,7 +302,7 @@ def generate_function_body(jsgrammar, htmlctx, num_lines,
                            statement_map: Dict[str, DerivationTreeNode]):
     js = ''
     js += 'var fuzzervars = {};\n\n'
-    js += "SetVariable(fuzzervars, window, 'Window');\nSetVariable(fuzzervars, document, 'Document');\nSetVariable(fuzzervars, document.body.firstChild, 'Element');\n\n"
+    js += "SetVariable(fuzzervars, window, 'Window');\nSetVariable(fuzzervars, strictDocument, 'Document');\nSetVariable(fuzzervars, strictDocument.body.firstChild, 'Element');\n\n"
     js += '//beginjs\n'
     js += htmlctx['htmlvargen']
     js += jsgrammar._generate_code(num_lines, tree_list, statement_map, htmlctx['htmlvars'])

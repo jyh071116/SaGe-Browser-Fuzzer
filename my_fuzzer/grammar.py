@@ -668,8 +668,8 @@ class Grammar(object):
         for v in initial_variables:
             context["variable_map"][v['name']] = DerivationTreeNode(v['name'], is_phantom=True)
             self._add_variable(v['name'], v['type'], context)
-        self._add_variable('document', 'Document', context)
-        context["variable_map"]['document'] = DerivationTreeNode('document', is_phantom=True)
+        self._add_variable('strictDocument', 'Document', context)
+        context["variable_map"]['strictDocument'] = DerivationTreeNode('strictDocument', is_phantom=True)
         self._add_variable('window', 'Window', context)
         context["variable_map"]['window'] = DerivationTreeNode('window', is_phantom=True)
 

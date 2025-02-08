@@ -144,7 +144,6 @@
 <tagname> = ins
 <tagname> = isindex
 <tagname> = kbd
-<tagname> = keygen
 <tagname> = label
 <tagname> = layer
 <tagname> = legend
@@ -156,10 +155,12 @@
 <tagname> = mark
 <tagname> = marquee
 <tagname> = menu
-<tagname> = menuitem
 <tagname> = meta
 <tagname> = meter
 <tagname> = multicol
+<tagname> = attachment
+<tagname> = color-profile
+<tagname> = search
 <tagname> = nav
 <tagname> = nobr
 <tagname> = noembed

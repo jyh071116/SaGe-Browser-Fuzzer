@@ -13,17 +13,30 @@
 
 
 <charset> = <attributestring>
-<charset> = UTF-7
-<charset> = UTF-8
-<charset> = UTF-16
-<charset> = UTF-32
-<charset> = EUC-JP
-<charset> = ISO-2022-JP
-<charset> = iso-8859-1
-<charset> = Big5
-<charset> = Shift_JIS
-<charset> = UTF-8
 <charset> = US-ASCII
+<charset> = ISO-8859-1
+<charset> = ISO-8859-2
+<charset> = ISO-8859-3
+<charset> = ISO-8859-4
+<charset> = ISO-8859-5
+<charset> = ISO-8859-6
+<charset> = ISO-8859-7
+<charset> = ISO-8859-8
+<charset> = ISO-8859-9
+<charset> = ISO-8859-10
+<charset> = Shift_JIS
+<charset> = EUC-JP
+<charset> = ISO-2022-KR
+<charset> = EUC-KR
+<charset> = ISO-2022-JP
+<charset> = ISO-2022-JP-2
+<charset> = ISO-8859-6-E
+<charset> = ISO-8859-6-I
+<charset> = ISO-8859-8-E
+<charset> = ISO-8859-8-I
+<charset> = GB2312
+<charset> = Big5
+<charset> = KOI8-R
 
 <onoff> = on
 <onoff> = off
@@ -34,6 +47,20 @@
 <accept_value> = audio/*
 <accept_value> = video/*
 <accept_value> = image/*
+<accept_value> = text/*
+<accept_value> = application/*
+<accept_value> = .mp3
+<accept_value> = .wav
+<accept_value> = .mp4
+<accept_value> = .mkv
+<accept_value> = .png
+<accept_value> = .jpg
+<accept_value> = .jpeg
+<accept_value> = .txt
+<accept_value> = .csv
+<accept_value> = .pdf
+<accept_value> = .zip
+<accept_value> = .tar.gz
 
 <accept-charset_value> = <charset>
 
@@ -84,6 +111,8 @@
 <aria-autocomplete_value> = list
 
 <aria-atomic_value> = <boolean>
+<aria-braillelabel_value> = <attributestring>
+<aria-brailleroledescription_value> = <attributestring>
 
 <aria-busy_value> = <boolean>
 
@@ -137,6 +166,7 @@
 
 <aria-orientation_value> = horizontal
 <aria-orientation_value> = vertical
+<aria-orientation_value> = undefined
 
 <aria-owns_value> = <elementid>
 
@@ -159,6 +189,8 @@
 
 <aria-sort_value> = ascending
 <aria-sort_value> = descending
+<aria-sort_value> = none
+<aria-sort_value> = other
 
 <aria-valuemax_value> = <fuzzint>
 
@@ -176,6 +208,11 @@
 <as_value> = image
 <as_value> = video
 <as_value> = font
+<as_value> = document
+<as_value> = embed
+<as_value> = fetch
+<as_value> = object
+<as_value> = worker
 
 <async_value> = <boolean>
 
@@ -454,6 +491,11 @@
 <inputmode_value> = tel
 <inputmode_value> = email
 <inputmode_value> = url
+<inputmode_value> = none
+<inputmode_value> = text
+<inputmode_value> = decimal
+<inputmode_value> = search
+
 
 <is_value> = x-pass
 <is_value> = x-body
@@ -713,6 +755,230 @@
 <lang_value> = sg
 <lang_value> = el-US
 <lang_value> = agq
+<lang_value> = aa
+<lang_value> = ab
+<lang_value> = ae
+<lang_value> = an
+<lang_value> = ar-BH
+<lang_value> = ar-DZ
+<lang_value> = ar-IQ
+<lang_value> = ar-JO
+<lang_value> = ar-KW
+<lang_value> = ar-LB
+<lang_value> = ar-LY
+<lang_value> = ar-MA
+<lang_value> = ar-OM
+<lang_value> = ar-QA
+<lang_value> = ar-SA
+<lang_value> = ar-SD
+<lang_value> = ar-SY
+<lang_value> = ar-TN
+<lang_value> = ar-YE
+<lang_value> = as
+<lang_value> = av
+<lang_value> = ay
+<lang_value> = az-Latn
+<lang_value> = ba
+<lang_value> = be
+<lang_value> = bg-BG
+<lang_value> = bh
+<lang_value> = bi
+<lang_value> = bm-Latn
+<lang_value> = bs
+<lang_value> = bs-Latn
+<lang_value> = ca-ES
+<lang_value> = ce
+<lang_value> = ch
+<lang_value> = co
+<lang_value> = cr
+<lang_value> = cs-CZ
+<lang_value> = cv
+<lang_value> = cy
+<lang_value> = da-DK
+<lang_value> = de-AT
+<lang_value> = de-LU
+<lang_value> = dz-BT
+<lang_value> = ee-GH
+<lang_value> = ee-TG
+<lang_value> = en-CA
+<lang_value> = en-IE
+<lang_value> = en-IN
+<lang_value> = en-NZ
+<lang_value> = en-PH
+<lang_value> = en-SG
+<lang_value> = en-ZA
+<lang_value> = eo
+<lang_value> = es-AR
+<lang_value> = es-BO
+<lang_value> = es-CL
+<lang_value> = es-CO
+<lang_value> = es-CR
+<lang_value> = es-DO
+<lang_value> = es-EC
+<lang_value> = es-ES
+<lang_value> = es-GT
+<lang_value> = es-HN
+<lang_value> = es-MX
+<lang_value> = es-NI
+<lang_value> = es-PA
+<lang_value> = es-PE
+<lang_value> = es-PR
+<lang_value> = es-PY
+<lang_value> = es-SV
+<lang_value> = es-UY
+<lang_value> = es-VE
+<lang_value> = et-EE
+<lang_value> = eu-ES
+<lang_value> = fa-IR
+<lang_value> = fi-FI
+<lang_value> = fj
+<lang_value> = fo
+<lang_value> = fr-BE
+<lang_value> = fr-CH
+<lang_value> = fr-LU
+<lang_value> = ga
+<lang_value> = gd
+<lang_value> = gl
+<lang_value> = gn
+<lang_value> = gu-IN
+<lang_value> = gv
+<lang_value> = ha-GH
+<lang_value> = ha-NE
+<lang_value> = ha-NG
+<lang_value> = he-IL
+<lang_value> = hi-IN
+<lang_value> = ho
+<lang_value> = hr-HR
+<lang_value> = ht
+<lang_value> = hu-HU
+<lang_value> = hy-AM
+<lang_value> = hz
+<lang_value> = ia
+<lang_value> = id-ID
+<lang_value> = ie
+<lang_value> = ig-NG
+<lang_value> = ii-CN
+<lang_value> = ik
+<lang_value> = io
+<lang_value> = is-IS
+<lang_value> = it-CH
+<lang_value> = it-IT
+<lang_value> = iu
+<lang_value> = ja-JP
+<lang_value> = jv
+<lang_value> = ka-GE
+<lang_value> = kg
+<lang_value> = ki-KE
+<lang_value> = kk-KZ
+<lang_value> = kl-GL
+<lang_value> = km-KH
+<lang_value> = kn-IN
+<lang_value> = ko-KR
+<lang_value> = kr
+<lang_value> = ks
+<lang_value> = ku
+<lang_value> = kv
+<lang_value> = kw-GB
+<lang_value> = ky-KG
+<lang_value> = lb
+<lang_value> = lg-UG
+<lang_value> = li
+<lang_value> = ln-CG
+<lang_value> = ln-CD
+<lang_value> = lo-LA
+<lang_value> = lt-LT
+<lang_value> = lu
+<lang_value> = lv-LV
+<lang_value> = mg-MG
+<lang_value> = mh
+<lang_value> = mi
+<lang_value> = mk-MK
+<lang_value> = ml-IN
+<lang_value> = mn-MN
+<lang_value> = mr-IN
+<lang_value> = ms-BN
+<lang_value> = ms-MY
+<lang_value> = mt
+<lang_value> = my-MM
+<lang_value> = na
+<lang_value> = nb-NO
+<lang_value> = nd-ZW
+<lang_value> = ne-NP
+<lang_value> = nl-BE
+<lang_value> = nl-NL
+<lang_value> = nn-NO
+<lang_value> = no-NO
+<lang_value> = nr
+<lang_value> = nso
+<lang_value> = ny
+<lang_value> = oc
+<lang_value> = oj
+<lang_value> = om
+<lang_value> = or-IN
+<lang_value> = os
+<lang_value> = pa-IN
+<lang_value> = pi
+<lang_value> = pl-PL
+<lang_value> = ps
+<lang_value> = pt-BR
+<lang_value> = pt-PT
+<lang_value> = qu
+<lang_value> = rm
+<lang_value> = rn
+<lang_value> = ro-RO
+<lang_value> = ru-RU
+<lang_value> = rw-RW
+<lang_value> = sa
+<lang_value> = sc
+<lang_value> = sd
+<lang_value> = se
+<lang_value> = sg
+<lang_value> = si-LK
+<lang_value> = sk-SK
+<lang_value> = sl-SI
+<lang_value> = sm
+<lang_value> = sn
+<lang_value> = so
+<lang_value> = sq-AL
+<lang_value> = sr-Cyrl
+<lang_value> = sr-Latn-RS
+<lang_value> = ss
+<lang_value> = st
+<lang_value> = su
+<lang_value> = sv-SE
+<lang_value> = sw-KE
+<lang_value> = sw-TZ
+<lang_value> = ta-IN
+<lang_value> = te-IN
+<lang_value> = tg
+<lang_value> = th-TH
+<lang_value> = ti
+<lang_value> = tk
+<lang_value> = tl
+<lang_value> = tn
+<lang_value> = to
+<lang_value> = tr-TR
+<lang_value> = ts
+<lang_value> = tt
+<lang_value> = tw
+<lang_value> = ty
+<lang_value> = ug
+<lang_value> = uk-UA
+<lang_value> = ur-PK
+<lang_value> = uz
+<lang_value> = ve
+<lang_value> = vi-VN
+<lang_value> = vo
+<lang_value> = wa
+<lang_value> = wo
+<lang_value> = xh
+<lang_value> = yi
+<lang_value> = yo-NG
+<lang_value> = za
+<lang_value> = zh-CN
+<lang_value> = zh-HK
+<lang_value> = zh-TW
+<lang_value> = zu
 
 <language_value> = javascript
 <language_value> = vbscript
@@ -903,7 +1169,6 @@
 <role_value> = listitem
 <role_value> = row
 <role_value> = presentation
-<role_value> = menuitem
 <role_value> = searchbox
 <role_value> = treeitem
 <role_value> = status
@@ -945,6 +1210,13 @@
 <role_value> = navigation
 <role_value> = heading
 <role_value> = tabpanel
+<role_value> = cell
+<role_value> = feed
+<role_value> = rowgroup
+<role_value> = switch
+<role_value> = table
+<role_value> = term
+
 
 <row_value> = <fuzzint>
 
@@ -1548,6 +1820,103 @@
 <scrollDelay_value> = <fuzzint>
 <imageSrcset_value> = <attributestring>
 <download_value> = <attributestring>
+
+<controlslist_value> = nodownload
+<controlslist_value> = nofullscreen
+<controlslist_value> = noremoteplayback
+
+<popovertarget_value> = 
+
+<popovertargetaction_value> = show
+<popovertargetaction_value> = hide
+<popovertargetaction_value> = toggle
+
+<autocapitalize_value> = none
+<autocapitalize_value> = off
+<autocapitalize_value> = sentences
+<autocapitalize_value> = on
+<autocapitalize_value> = words
+<autocapitalize_value> = characters
+
+<allow_value> = accelerometer
+<allow_value> = ambient-light-sensor
+<allow_value> = autoplay
+<allow_value> = battery
+<allow_value> = camera
+<allow_value> = display-capture
+<allow_value> = document-domain
+<allow_value> = encrypted-media
+<allow_value> = fullscreen
+<allow_value> = geolocation
+<allow_value> = gyroscope
+<allow_value> = layout-animations
+<allow_value> = legacy-image-formats
+<allow_value> = magnetometer
+<allow_value> = microphone
+<allow_value> = midi
+<allow_value> = navigation-override
+<allow_value> = oversized-images
+<allow_value> = payment
+<allow_value> = picture-in-picture
+<allow_value> = publickey-credentials-get
+<allow_value> = sync-script
+<allow_value> = sync-xhr
+<allow_value> = usb
+<allow_value> = screen-wake-lock
+<allow_value> = web-share
+<allow_value> = unoptimized-images
+<allow_value> = unsized-media
+<allow_value> = xr-spatial-tracking
+
+<loading_value> = eager
+<loading_value> = lazy
+
+<allowpaymentrequest_value> = true
+<allowpaymentrequest_value> = false
+
+<decoding_value> = sync
+<decoding_value> = async
+<decoding_value> = auto
+
+<elementtiming_value> = lol
+
+<fetchpriority_value> = high
+<fetchpriority_value> = low
+<fetchpriority_value> = auto
+
+
+<blocking_value> = render
+
+<httpequiv_value> = content-security-policy
+<httpequiv_value> = content-type
+<httpequiv_value> = default-style
+<httpequiv_value> = refresh
+
+<nomodule_value> = true
+<nomodule_value> = false
+
+<shadowrootmode_value> = open
+<shadowrootmode_value> = closed
+
+<shadowrootclonable_value> = true
+<shadowrootclonable_value> = false
+
+<shadowrootdelegatesfocus_value> = true
+<shadowrootdelegatesfocus_value> = false
+
+<minlength_value> = 
+<minlength_value> = 5
+<minlength_value> = 6
+<minlength_value> = 7
+<minlength_value> = 8
+<minlength_value> = 9
+<minlength_value> = 10
+
+<autocorrect_value> = on
+<autocorrect_value> = off
+
+<autocomplete_value> = on
+<autocomplete_value> = off
 
 
 <attribute_defaultPrevented> = defaultPrevented="<defaultPrevented_value>"

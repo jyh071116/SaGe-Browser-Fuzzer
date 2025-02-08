@@ -136,6 +136,7 @@
 <cssproperty_name> = -webkit-border-start-width
 <cssproperty_name> = -webkit-border-top-left-radius
 <cssproperty_name> = -webkit-border-top-right-radius
+<cssproperty_name> = -webkit-border-horizontal-spacing
 <cssproperty_name> = -webkit-border-vertical-spacing
 <cssproperty_name> = -webkit-box-align
 <cssproperty_name> = -webkit-box-decoration-break
@@ -151,6 +152,7 @@
 <cssproperty_name> = -webkit-box-sizing
 <cssproperty_name> = -webkit-clip-path
 <cssproperty_name> = -webkit-color-correction
+<cssproperty_name> = -webkit-column-axis
 <cssproperty_name> = -webkit-column-break-after
 <cssproperty_name> = -webkit-column-break-before
 <cssproperty_name> = -webkit-column-break-inside
@@ -192,6 +194,9 @@
 <cssproperty_name> = -webkit-margin-start
 <cssproperty_name> = -webkit-margin-top-collapse
 <cssproperty_name> = -webkit-marquee-speed
+<cssproperty_name> = -webkit-marquee-style
+<cssproperty_name> = -webkit-marquee-direction
+<cssproperty_name> = -webkit-column-progression
 <cssproperty_name> = -webkit-mask
 <cssproperty_name> = -webkit-mask-box-image
 <cssproperty_name> = -webkit-mask-box-image-outset
@@ -204,6 +209,8 @@
 <cssproperty_name> = -webkit-mask-image
 <cssproperty_name> = -webkit-mask-origin
 <cssproperty_name> = -webkit-mask-position
+<cssproperty_name> = -webkit-mask-position-x
+<cssproperty_name> = -webkit-mask-position-y
 <cssproperty_name> = -webkit-mask-repeat
 <cssproperty_name> = -webkit-mask-repeat-y
 <cssproperty_name> = -webkit-mask-size
@@ -221,6 +228,8 @@
 <cssproperty_name> = -webkit-perspective-origin-y
 <cssproperty_name> = -webkit-print-color-adjust
 <cssproperty_name> = -webkit-rtl-ordering
+<cssproperty_name> = -webkit-text-zoom
+<cssproperty_name> = -webkit-cursor-visibility
 <cssproperty_name> = -webkit-ruby-position
 <cssproperty_name> = -webkit-shape-margin
 <cssproperty_name> = -webkit-shape-outside
@@ -631,6 +640,7 @@
 <cssproperty_value> = <cssproperty_-webkit-border-start-width>
 <cssproperty_value> = <cssproperty_-webkit-border-top-left-radius>
 <cssproperty_value> = <cssproperty_-webkit-border-top-right-radius>
+<cssproperty_value> = <cssproperty_-webkit-border-horizontal-spacing>
 <cssproperty_value> = <cssproperty_-webkit-border-vertical-spacing>
 <cssproperty_value> = <cssproperty_-webkit-box-align>
 <cssproperty_value> = <cssproperty_-webkit-box-decoration-break>
@@ -646,6 +656,7 @@
 <cssproperty_value> = <cssproperty_-webkit-box-sizing>
 <cssproperty_value> = <cssproperty_-webkit-clip-path>
 <cssproperty_value> = <cssproperty_-webkit-color-correction>
+<cssproperty_value> = <cssproperty_-webkit-column-axis>
 <cssproperty_value> = <cssproperty_-webkit-column-break-after>
 <cssproperty_value> = <cssproperty_-webkit-column-break-before>
 <cssproperty_value> = <cssproperty_-webkit-column-break-inside>
@@ -687,6 +698,9 @@
 <cssproperty_value> = <cssproperty_-webkit-margin-start>
 <cssproperty_value> = <cssproperty_-webkit-margin-top-collapse>
 <cssproperty_value> = <cssproperty_-webkit-marquee-speed>
+<cssproperty_value> = <cssproperty_-webkit-marquee-style>
+<cssproperty_value> = <cssproperty_-webkit-marquee-direction>
+<cssproperty_value> = <cssproperty_-webkit-column-progression>
 <cssproperty_value> = <cssproperty_-webkit-mask>
 <cssproperty_value> = <cssproperty_-webkit-mask-box-image>
 <cssproperty_value> = <cssproperty_-webkit-mask-box-image-outset>
@@ -699,6 +713,8 @@
 <cssproperty_value> = <cssproperty_-webkit-mask-image>
 <cssproperty_value> = <cssproperty_-webkit-mask-origin>
 <cssproperty_value> = <cssproperty_-webkit-mask-position>
+<cssproperty_value> = <cssproperty_-webkit-mask-position-x>
+<cssproperty_value> = <cssproperty_-webkit-mask-position-y>
 <cssproperty_value> = <cssproperty_-webkit-mask-repeat>
 <cssproperty_value> = <cssproperty_-webkit-mask-repeat-y>
 <cssproperty_value> = <cssproperty_-webkit-mask-size>
@@ -716,6 +732,8 @@
 <cssproperty_value> = <cssproperty_-webkit-perspective-origin-y>
 <cssproperty_value> = <cssproperty_-webkit-print-color-adjust>
 <cssproperty_value> = <cssproperty_-webkit-rtl-ordering>
+<cssproperty_value> = <cssproperty_-webkit-text-zoom>
+<cssproperty_value> = <cssproperty_-webkit-cursor-visibility>
 <cssproperty_value> = <cssproperty_-webkit-ruby-position>
 <cssproperty_value> = <cssproperty_-webkit-shape-margin>
 <cssproperty_value> = <cssproperty_-webkit-shape-outside>
@@ -1126,6 +1144,7 @@
 <cssproperty> = -webkit-border-start-width: <cssproperty_-webkit-border-start-width>
 <cssproperty> = -webkit-border-top-left-radius: <cssproperty_-webkit-border-top-left-radius>
 <cssproperty> = -webkit-border-top-right-radius: <cssproperty_-webkit-border-top-right-radius>
+<cssproperty> = -webkit-border-horizontal-spacing: <cssproperty_-webkit-border-horizontal-spacing>
 <cssproperty> = -webkit-border-vertical-spacing: <cssproperty_-webkit-border-vertical-spacing>
 <cssproperty> = -webkit-box-align: <cssproperty_-webkit-box-align>
 <cssproperty> = -webkit-box-decoration-break: <cssproperty_-webkit-box-decoration-break>
@@ -1141,6 +1160,7 @@
 <cssproperty> = -webkit-box-sizing: <cssproperty_-webkit-box-sizing>
 <cssproperty> = -webkit-clip-path: <cssproperty_-webkit-clip-path>
 <cssproperty> = -webkit-color-correction: <cssproperty_-webkit-color-correction>
+<cssproperty> = -webkit-column-axis: <cssproperty_-webkit-column-axis>
 <cssproperty> = -webkit-column-break-after: <cssproperty_-webkit-column-break-after>
 <cssproperty> = -webkit-column-break-before: <cssproperty_-webkit-column-break-before>
 <cssproperty> = -webkit-column-break-inside: <cssproperty_-webkit-column-break-inside>
@@ -1182,6 +1202,9 @@
 <cssproperty> = -webkit-margin-start: <cssproperty_-webkit-margin-start>
 <cssproperty> = -webkit-margin-top-collapse: <cssproperty_-webkit-margin-top-collapse>
 <cssproperty> = -webkit-marquee-speed: <cssproperty_-webkit-marquee-speed>
+<cssproperty> = -webkit-marquee-style: <cssproperty_-webkit-marquee-style>
+<cssproperty> = -webkit-marquee-direction: <cssproperty_-webkit-marquee-direction>
+<cssproperty> = -webkit-column-progression: <cssproperty_-webkit-column-progression>
 <cssproperty> = -webkit-mask: <cssproperty_-webkit-mask>
 <cssproperty> = -webkit-mask-box-image: <cssproperty_-webkit-mask-box-image>
 <cssproperty> = -webkit-mask-box-image-outset: <cssproperty_-webkit-mask-box-image-outset>
@@ -1194,6 +1217,8 @@
 <cssproperty> = -webkit-mask-image: <cssproperty_-webkit-mask-image>
 <cssproperty> = -webkit-mask-origin: <cssproperty_-webkit-mask-origin>
 <cssproperty> = -webkit-mask-position: <cssproperty_-webkit-mask-position>
+<cssproperty> = -webkit-mask-position-x: <cssproperty_-webkit-mask-position-x>
+<cssproperty> = -webkit-mask-position-y: <cssproperty_-webkit-mask-position-y>
 <cssproperty> = -webkit-mask-repeat: <cssproperty_-webkit-mask-repeat>
 <cssproperty> = -webkit-mask-repeat-y: <cssproperty_-webkit-mask-repeat-y>
 <cssproperty> = -webkit-mask-size: <cssproperty_-webkit-mask-size>
@@ -1211,6 +1236,8 @@
 <cssproperty> = -webkit-perspective-origin-y: <cssproperty_-webkit-perspective-origin-y>
 <cssproperty> = -webkit-print-color-adjust: <cssproperty_-webkit-print-color-adjust>
 <cssproperty> = -webkit-rtl-ordering: <cssproperty_-webkit-rtl-ordering>
+<cssproperty> = -webkit-text-zoom: <cssproperty_-webkit-text-zoom>
+<cssproperty> = -webkit-cursor-visibility: <cssproperty_-webkit-cursor-visibility>
 <cssproperty> = -webkit-ruby-position: <cssproperty_-webkit-ruby-position>
 <cssproperty> = -webkit-shape-margin: <cssproperty_-webkit-shape-margin>
 <cssproperty> = -webkit-shape-outside: <cssproperty_-webkit-shape-outside>
